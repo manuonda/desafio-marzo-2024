@@ -16,15 +16,15 @@ public class HabitacionRepositoryTests {
     private TipoHabitacionRepository tipoHabitacionRepository;
 
 
-      //Test for
-         @Test
-         @DisplayName("Junit method Test cuando guarda una habitacion")
-         public void given_when_then(){
-            //given - preparo nuestros datos
+    //Test for
+    @Test
+    @DisplayName("Junit method Test cuando guarda una habitacion")
+    public void given_when_then() {
+        //given - preparo nuestros datos
 
-            //when - acciones a realizar para testing
+        //when - acciones a realizar para testing
 
-            //then - verificamos la salida
-         }
+        //then - verificamos la salida
+    }
 
 }
