@@ -84,7 +84,77 @@ public class TipoHabitacionRepositoryTests {
     }
 
 
+    @Test
+    @DisplayName("Junit Method Test find by Nombre")
+    public  void givenObjectTipoHabitacion_whenFindByNombre_thenReturnObjectTipoHabitacion(){
+        //given
+        String tipoHabitacionEstandar = "HAB. ESTANDAR";
+        TipoHabitacion tipoHabitacion = TipoHabitacion.builder()
+                .nombre(tipoHabitacionEstandar)
+                .build();
+        this.tipoHabitacionRepository.save(tipoHabitacion);
 
+        //when
+         TipoHabitacion tipoHabitacion1 = this.tipoHabitacionRepository.findByNombre(tipoHabitacionEstandar).get();
+
+        //then
+        Assertions.assertThat(tipoHabitacion1).isNotNull();
+        Assertions.assertThat(tipoHabitacion1.getId()).isGreaterThan(0);
+    }
+
+
+    @Test
+    @DisplayName("Junit Method Test find List Tipo Habitacion by Param Nombre ")
+    public  void givenObjectTipoHabitacion_whenFindListByNombre_thenReturnObjectListTipoHabitacion(){
+        //given
+        String tipoHabitacionEstandar = "HAB. ESTANDAR";
+        String tipoHabitacionEstandarDoble ="HAB. ESTANDAR DOBLE";
+
+        TipoHabitacion tipoHabitacion = TipoHabitacion.builder()
+                .nombre(tipoHabitacionEstandar)
+                .build();
+        this.tipoHabitacionRepository.save(tipoHabitacion);
+
+        TipoHabitacion tipoHabitacion1 = TipoHabitacion.builder()
+                .nombre(tipoHabitacionEstandarDoble)
+                .build();
+        this.tipoHabitacionRepository.save(tipoHabitacion1);
+
+
+        //when
+        List<TipoHabitacion> listado = this.tipoHabitacionRepository.findListByParam("ESTANDAR");
+
+        //then
+        Assertions.assertThat(listado).isNotEmpty();
+        Assertions.assertThat(listado.size()).isEqualTo(2);
+    }
+
+
+    @Test
+    @DisplayName("Junit Method Test find List Tipo Habitacion by Native Query  Nombre ")
+    public  void givenObjectTipoHabitacion_whenFindListByNativeQueryNombre_thenReturnObjectListTipoHabitacion(){
+        //given
+        String tipoHabitacionEstandar = "HAB. ESTANDAR";
+        String tipoHabitacionEstandarDoble ="HAB. ESTANDAR DOBLE";
+
+        TipoHabitacion tipoHabitacion = TipoHabitacion.builder()
+                .nombre(tipoHabitacionEstandar)
+                .build();
+        this.tipoHabitacionRepository.save(tipoHabitacion);
+
+        TipoHabitacion tipoHabitacion1 = TipoHabitacion.builder()
+                .nombre(tipoHabitacionEstandarDoble)
+                .build();
+        this.tipoHabitacionRepository.save(tipoHabitacion1);
+
+
+        //when
+        List<TipoHabitacion> listado = this.tipoHabitacionRepository.findByNativeQuery("ESTANDAR");
+
+        //then
+        Assertions.assertThat(listado).isNotEmpty();
+        Assertions.assertThat(listado.size()).isEqualTo(2);
+    }
 
 
 }

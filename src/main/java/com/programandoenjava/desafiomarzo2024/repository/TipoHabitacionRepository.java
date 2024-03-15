@@ -14,15 +14,16 @@ import java.util.Optional;
  */
 public interface TipoHabitacionRepository extends JpaRepository<TipoHabitacion, Long> {
 
-    @Query("SELECT th FROM TipoHabitacion where nombre =  ?1% ")
+    @Query("SELECT th FROM TipoHabitacion th where th.nombre =  ?1% ")
     Optional<TipoHabitacion> findByNombre(String nombre);
 
 
-    @Query("SELECT th FROM TipoHabitacion where nombre '%:nombre%'")
-    List<TipoHabitacion> findByParam(@Param("nombre") String nombre);
+    @Query("SELECT th FROM TipoHabitacion th WHERE th.nombre LIKE CONCAT('%', :nombre, '%')")
+    List<TipoHabitacion> findListByParam(@Param("nombre") String nombre);
 
 
-    @Query(value = "SELECT * FROM tbl_tipo_habitacion where nombre '%?1%'", nativeQuery = true)
-    List<TipoHabitacion> findByNativeQuery(@Param("nombre") String nombre);
+    @Query(value = "SELECT * FROM tbl_tipo_habitacion th where th.nombre  LIKE %?1% ", nativeQuery = true)
+    List<TipoHabitacion> findByNativeQuery(String nombre);
+
 
 }
