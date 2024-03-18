@@ -2,6 +2,8 @@ package com.programandoenjava.desafiomarzo2024.entity.domain;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jdk.jfr.Timestamp;
 import lombok.*;
 
@@ -20,11 +22,18 @@ public class Habitacion {
     private Long id;
 
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     TipoHabitacion tipoHabitacion;
 
 
     private LocalDateTime fecha;
+
+    private Double precio;
+
+    private Boolean isDisponible;
+
+    private int cantidad;
 
     /**
      * Identificador unico de habitacion
