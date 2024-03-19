@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface HabitacionRepository  extends JpaRepository<Habitacion, Long> {
 
-    @Query("")
-    public List<Habitacion>
+
 }

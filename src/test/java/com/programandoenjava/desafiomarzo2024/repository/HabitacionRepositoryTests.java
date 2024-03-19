@@ -83,6 +83,4 @@ public class HabitacionRepositoryTests {
     }
 
 
-    @Test
-    @DisplayName("")
 }

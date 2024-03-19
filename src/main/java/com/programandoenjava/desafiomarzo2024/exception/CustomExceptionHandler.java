@@ -4,6 +4,7 @@ package com.programandoenjava.desafiomarzo2024.exception;
 import com.programandoenjava.desafiomarzo2024.entity.dto.ResponseExceptionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,7 +26,7 @@ public class CustomExceptionHandler {
     public ResponseEntity<ResponseExceptionDTO> handlerNotFound(EntityNotFoundException ex){
         logger.info("handleNot Found " + ex.getMessage());
         ResponseExceptionDTO response = new ResponseExceptionDTO(ex.getMessage(), HttpStatus.NOT_FOUND.value());
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
 

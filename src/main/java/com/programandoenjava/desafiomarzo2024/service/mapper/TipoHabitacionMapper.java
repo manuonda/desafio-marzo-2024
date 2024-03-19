@@ -12,7 +12,7 @@ public interface TipoHabitacionMapper {
 
     TipoHabitacionDTO toDTO(TipoHabitacion entity);
 
-    TipoHabitacionDTO toEntity(TipoHabitacionDTO dto);
+    TipoHabitacion toEntity(TipoHabitacionDTO dto);
 
     List<TipoHabitacionDTO> toListadoDTO(List<TipoHabitacion> entitys);
 }
