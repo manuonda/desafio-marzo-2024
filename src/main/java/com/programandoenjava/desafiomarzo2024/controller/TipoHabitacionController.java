@@ -1,8 +1,11 @@
 package com.programandoenjava.desafiomarzo2024.controller;
 
 
+import com.programandoenjava.desafiomarzo2024.entity.domain.TipoHabitacion;
 import com.programandoenjava.desafiomarzo2024.entity.dto.TipoHabitacionDTO;
 import com.programandoenjava.desafiomarzo2024.service.TipoHabitacionService;
+import jakarta.validation.Valid;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +37,11 @@ public class TipoHabitacionController {
         return ResponseEntity.status(HttpStatus.OK).body(tipoHabitacionDTO);
     }
 
+
+    @PostMapping("/save")
+    public ResponseEntity<TipoHabitacionDTO> save(@Valid @RequestBody TipoHabitacionDTO dto){
+        TipoHabitacionDTO tipoHabitacionDTO = this.tipoHabitacionService.save(dto);
+        return ResponseEntity.status(HttpStatus.OK).body(tipoHabitacionDTO);
+    }
 
 }

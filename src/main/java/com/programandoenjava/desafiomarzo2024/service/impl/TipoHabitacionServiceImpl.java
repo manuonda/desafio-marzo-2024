@@ -10,6 +10,7 @@ import com.programandoenjava.desafiomarzo2024.service.mapper.TipoHabitacionMappe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +20,13 @@ public class TipoHabitacionServiceImpl implements TipoHabitacionService {
 
     private final TipoHabitacionRepository repository;
 
-    @Autowired
-    private TipoHabitacionMapper tipoHabitacionMapper;
+    private final  TipoHabitacionMapper tipoHabitacionMapper;
 
-    public TipoHabitacionServiceImpl(TipoHabitacionRepository repository) {
+    public TipoHabitacionServiceImpl(TipoHabitacionRepository repository ,
+                                     TipoHabitacionMapper tipoHabitacionMapper)
+    {
         this.repository = repository;
+        this.tipoHabitacionMapper = tipoHabitacionMapper;
     }
 
 
@@ -41,7 +44,12 @@ public class TipoHabitacionServiceImpl implements TipoHabitacionService {
 
     @Override
     public TipoHabitacionDTO findById(Long id) {
-        return null;
+        Optional<TipoHabitacion> findTipoHabitacion = this.repository.findById(id);
+        if ( findTipoHabitacion.isEmpty()){
+            throw  new EntityNotFoundException("El TipoHabitacion no encontrado con id : "+  )
+        }
+
+        this.tipoHabitacionMapper.toDTO(findTipoHabitacion.get());
     }
 
     @Override

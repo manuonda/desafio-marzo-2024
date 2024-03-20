@@ -46,6 +46,7 @@ public class TipoHabitacionRepositoryTests {
         //then - verificamos la salida
         Assertions.assertThat(tipoHabitacionSaved).isNotNull();
         Assertions.assertThat(tipoHabitacionSaved.getId()).isGreaterThan(0);
+
     }
 
     //Test Junit get Tipo Habitacion by Id
