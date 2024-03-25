@@ -89,6 +89,16 @@ public class TipoHabitacionServiceTests {
         assertThat(savedDTO.getNombre()).isEqualTo(dto.getNombre());
     }
 
+    @Test
+    @DisplayName("Test Get By Id Tip Habitacion")
+    public void givenObjectTipoHabitacion_whenGetByIdTipoHabitacion_thenReturnObjectTipoHabitacion(){
+         //given
+
+         //when
+
+         //then
+    }
+
 
 
 }
